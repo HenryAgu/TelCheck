@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast, Toaster } from "sonner";
 
 const App = () => {
   const [input, setInput] = useState<string>("");
@@ -17,7 +18,7 @@ const App = () => {
       input.startsWith("0913") ||
       input.startsWith("091")
     ) {
-      alert("MTN");
+      toast(<div className="flex items-center gap-x-3"><img src="/src/assets/mtn.jpg" className="h-6 w-6"/>This is a MTN phone number.</div>);
     } else if (
       input.startsWith("0805") ||
       input.startsWith("0807") ||
@@ -27,7 +28,7 @@ const App = () => {
       input.startsWith("0905") ||
       input.startsWith("0915")
     ) {
-      alert("GLO");
+      toast(<div className="flex items-center gap-x-3"><img src="/src/assets/GloLogo.png" className="h-6 w-6"/>This is a glo phone number</div>);
     } else if (
       input.startsWith("0802") ||
       input.startsWith("0808") ||
@@ -40,7 +41,7 @@ const App = () => {
       input.startsWith("0907") ||
       input.startsWith("0912")
     ) {
-      alert("AIRTEL");
+      toast(<div className="flex items-center gap-x-3"><img src="/src/assets/airtel.png" className="h-6 w-6"/> This a Airtel phone number</div>);
     } else if (
       input.startsWith("0809") ||
       input.startsWith("0817") ||
@@ -48,24 +49,25 @@ const App = () => {
       input.startsWith("0908") ||
       input.startsWith("0909")
     ) {
-      alert("9MOBILE");
+      toast(<div className="flex items-center gap-x-3"><img src="/src/assets/9mobile.jpg" className="h-6 w-6"/> This a 9mobile phone number.</div>);
     } else if (input.startsWith("0804")) {
-      alert("NTEL");
+      toast(<div className="flex items-center gap-x-3"><img src="/src/assets/ntel.jpg" className="h-6 w-6"/> This a Ntel phone number.</div>);
     } else if (
       input.startsWith("0819") ||
       input.startsWith("07028") ||
       input.startsWith("07029")
     ) {
-      alert("STARCOMMS");
+      toast(<div className="flex items-center gap-x-3"><img src="/src/assets/starcomms.png" className="h-6 w-6"/> This a Starcomms mobile phone number.</div>);
     } else if (!input.trim()) {
-      alert("Please enter a phone number");
+      toast("Please enter a phone number");
     } else {
-      alert("Unknown network");
+      toast("Unknown network");
     }
   };
 
   return (
     <main className="bg-[#F8F8F8] flex h-screen flex-col justify-center items-center px-5">
+      <Toaster/>
       <div className="border-2 border-[#E5E5E5] bg-white flex items-center gap-x-2 justify-between w-full md:w-2/4 lg:w-1/3 my-5 p-2 rounded-full">
         <input
           type="tel"
