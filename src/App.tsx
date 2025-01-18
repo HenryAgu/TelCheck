@@ -2,19 +2,83 @@ import { useState } from "react";
 
 const App = () => {
   const [input, setInput] = useState<string>("");
+  const verifyNumber = () => {
+    if (
+      input.startsWith("0803") ||
+      input.startsWith("0703") ||
+      input.startsWith("0903") ||
+      input.startsWith("0806") ||
+      input.startsWith("0706") ||
+      input.startsWith("0813") ||
+      input.startsWith("0810") ||
+      input.startsWith("0814") ||
+      input.startsWith("0816") ||
+      input.startsWith("0906") ||
+      input.startsWith("0913") ||
+      input.startsWith("091")
+    ) {
+      alert("MTN");
+    } else if (
+      input.startsWith("0805") ||
+      input.startsWith("0807") ||
+      input.startsWith("0705") ||
+      input.startsWith("0811") ||
+      input.startsWith("0815") ||
+      input.startsWith("0905") ||
+      input.startsWith("0915")
+    ) {
+      alert("GLO");
+    } else if (
+      input.startsWith("0802") ||
+      input.startsWith("0808") ||
+      input.startsWith("0708") ||
+      input.startsWith("0701") ||
+      input.startsWith("0812") ||
+      input.startsWith("0901") ||
+      input.startsWith("0902") ||
+      input.startsWith("0904") ||
+      input.startsWith("0907") ||
+      input.startsWith("0912")
+    ) {
+      alert("AIRTEL");
+    } else if (
+      input.startsWith("0809") ||
+      input.startsWith("0817") ||
+      input.startsWith("0818") ||
+      input.startsWith("0908") ||
+      input.startsWith("0909")
+    ) {
+      alert("9MOBILE");
+    } else if (input.startsWith("0804")) {
+      alert("NTEL");
+    } else if (
+      input.startsWith("0819") ||
+      input.startsWith("07028") ||
+      input.startsWith("07029")
+    ) {
+      alert("STARCOMMS");
+    } else if (!input.trim()) {
+      alert("Please enter a phone number");
+    } else {
+      alert("Unknown network");
+    }
+  };
+
   return (
-    <main className="bg-[#F8F8F8] flex h-screen flex-col justify-center items-center mx-5">
-      <div className="border-2 border-[#E5E5E5] bg-white flex items-center gap-x-2 justify-between w-full md:w-1/3 my-5 p-2 rounded-full">
+    <main className="bg-[#F8F8F8] flex h-screen flex-col justify-center items-center px-5">
+      <div className="border-2 border-[#E5E5E5] bg-white flex items-center gap-x-2 justify-between w-full md:w-2/4 lg:w-1/3 my-5 p-2 rounded-full">
         <input
           type="tel"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           className="w-full pl-4 outline-transparent text-sm font-medium text-[#999999] bg-transparent"
           placeholder="Check phone number..."
+          maxLength={11}
         />
         <button
           type="submit"
           className="bg-black p-4 rounded-full transition-all ease-out duration-200 hover:shadow-lg"
+          onClick={verifyNumber}
         >
           <svg
             width="18"
@@ -37,7 +101,18 @@ const App = () => {
           className="border border-[#E5E5E5] py-2 px-4 rounded-md flex items-center gap-x-3.5"
         >
           <span className="text-sm text-[#4f4f4f]">Built by Henry Agu</span>
-          <img src="/src/assets/vector.svg" alt="arrow" className="h-3 w-3" />
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 15 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 0V2H11.59L0 13.59L1.41 15L13 3.41V10H15V0H5Z"
+              fill="#323232"
+            />
+          </svg>
         </a>
       </div>
     </main>
