@@ -1,83 +1,52 @@
 import { useState } from "react";
 import { toast, Toaster } from "sonner";
 
-import mtnLogo from "/assets/images/mtn.jpg";
-import gloLogo from "/assets/images/GloLogo.png";
-import airtelLogo from "/assets/images/airtel.png";
-import mobileLogo from "/assets/images/9mobile.jpg";
-import ntelLogo from "/assets/images/ntel.jpg";
-import starcommsLogo from "/assets/images/starcomms.png";
-
 const App = () => {
   const [input, setInput] = useState<string>("");
 
   const networkData = [
     {
-      prefixes: [
-        "0803",
-        "0703",
-        "0903",
-        "0806",
-        "0706",
-        "0813",
-        "0810",
-        "0814",
-        "0816",
-        "0906",
-        "0913",
-        "091",
-      ],
+      prefixes: ["0803", "0703", "0903", "0806", "0706", "0813", "0810", "0814", "0816", "0906", "0913", "091"],
       name: "MTN",
-      imgSrc: mtnLogo,
+      imgSrc: "/src/assets/images/mtn.jpg",
     },
     {
       prefixes: ["0805", "0807", "0705", "0811", "0815", "0905", "0915"],
       name: "Glo",
-      imgSrc: gloLogo,
+      imgSrc: "/src/assets/images/GloLogo.png",
     },
     {
-      prefixes: [
-        "0802",
-        "0808",
-        "0708",
-        "0701",
-        "0812",
-        "0901",
-        "0902",
-        "0904",
-        "0907",
-        "0912",
-      ],
+      prefixes: ["0802", "0808", "0708", "0701", "0812", "0901", "0902", "0904", "0907", "0912"],
       name: "Airtel",
-      imgSrc: airtelLogo,
+      imgSrc: "/src/assets/images/airtel.png",
     },
     {
       prefixes: ["0809", "0817", "0818", "0908", "0909"],
       name: "9mobile",
-      imgSrc: mobileLogo,
+      imgSrc: "/src/assets/images/9mobile.jpg",
     },
     {
       prefixes: ["0804"],
       name: "Ntel",
-      imgSrc: ntelLogo,
+      imgSrc: "/src/assets/images/ntel.jpg",
     },
     {
       prefixes: ["0819", "07028", "07029"],
       name: "Starcomms",
-      imgSrc: starcommsLogo,
+      imgSrc: "/src/assets/images/starcomms.png",
     },
   ];
-
+  
   const verifyNumber = (input: string) => {
     if (!input.trim()) {
       toast("Please enter a phone number");
       return;
     }
-
+  
     const network = networkData.find((network) =>
       network.prefixes.some((prefix) => input.startsWith(prefix))
     );
-
+  
     if (network) {
       toast(
         <div className="flex items-center gap-x-3">
@@ -92,7 +61,7 @@ const App = () => {
 
   return (
     <main className="bg-[#F8F8F8] flex h-screen flex-col justify-center items-center px-5">
-      <Toaster />
+      <Toaster/>
       <div className="border-2 border-[#E5E5E5] bg-white flex items-center gap-x-2 justify-between w-full md:w-2/4 lg:w-1/3 my-5 p-2 rounded-full">
         <input
           type="tel"
@@ -105,7 +74,7 @@ const App = () => {
         <button
           type="submit"
           className="bg-black p-4 rounded-full transition-all ease-out duration-200 hover:shadow-lg"
-          onClick={() => verifyNumber(input)}
+          onClick={()=> verifyNumber(input)}
         >
           <svg
             width="18"
