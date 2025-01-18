@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { toast, Toaster } from "sonner";
 
-import mtnLogo from "./assets/images/mtn.jpg";
-import gloLogo from "./assets/images/GloLogo.png";
-import airtelLogo from "./assets/images/airtel.png";
-import mobileLogo from "./assets/images/9mobile.jpg";
-import ntelLogo from "./assets/images/ntel.jpg";
-import starcommsLogo from "./assets/images/starcomms.png";
+import mtnLogo from "/assets/images/mtn.jpg";
+import gloLogo from "/assets/images/GloLogo.png";
+import airtelLogo from "/assets/images/airtel.png";
+import mobileLogo from "/assets/images/9mobile.jpg";
+import ntelLogo from "/assets/images/ntel.jpg";
+import starcommsLogo from "/assets/images/starcomms.png";
 
 const App = () => {
   const [input, setInput] = useState<string>("");
