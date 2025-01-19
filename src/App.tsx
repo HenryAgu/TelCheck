@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { toast, Toaster } from "sonner";
 
+interface NetworkData {
+  prefixes: string[];
+  name: string;
+  imgSrc: string;
+}
+
 const App = () => {
   const [input, setInput] = useState<string>("");
 
-  const networkData = [
+  const networkData: NetworkData[] = [
     {
       prefixes: [
         "0803",
@@ -39,6 +45,7 @@ const App = () => {
         "0904",
         "0907",
         "0912",
+        "0911",
       ],
       name: "Airtel",
       imgSrc: "/src/assets/images/airtel.png",
@@ -58,6 +65,16 @@ const App = () => {
       name: "Starcomms",
       imgSrc: "/src/assets/images/starcomms.png",
     },
+    {
+      prefixes: ["0702"],
+      name: "Smile",
+      imgSrc: "/src/assets/images/smile.jpg",
+    },
+    {
+      prefixes: ["0707"],
+      name: "Zoom",
+      imgSrc: "/src/assets/images/zoom.jpg",
+    },
   ];
 
   const verifyNumber = (input: string) => {
@@ -74,7 +91,10 @@ const App = () => {
       toast(
         <div className="flex items-center gap-x-3">
           <img src={network.imgSrc} className="h-6 w-6" alt={network.name} />
-          {network.name === "9mobile" || network.name === "Starcomms"
+          {network.name === "9mobile" ||
+          network.name === "Starcomms" ||
+          network.name === "Zoom" ||
+          network.name === "Smile"
             ? `This is a ${network.name} phone number.`
             : `This is an ${network.name} phone number.`}
         </div>
@@ -84,6 +104,13 @@ const App = () => {
     }
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    // Allow only numeric values
+    const numericValue = value.replace(/[^0-9]/g, "");
+    setInput(numericValue);
+  };
+
   return (
     <main className="bg-[#F8F8F8] flex h-screen flex-col justify-center items-center px-5">
       <Toaster />
@@ -91,7 +118,7 @@ const App = () => {
         <input
           type="tel"
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={handleInputChange}
           className="w-full pl-4 outline-transparent text-sm md:text-base font-medium text-[#999999] bg-transparent"
           placeholder="Check phone number..."
           maxLength={11}
