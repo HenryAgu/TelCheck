@@ -6,7 +6,19 @@ const App = () => {
 
   const networkData = [
     {
-      prefixes: ["0803", "0703", "0903", "0806", "0706", "0813", "0810", "0814", "0816", "0906", "0913"],
+      prefixes: [
+        "0803",
+        "0703",
+        "0903",
+        "0806",
+        "0706",
+        "0813",
+        "0810",
+        "0814",
+        "0816",
+        "0906",
+        "0913",
+      ],
       name: "MTN",
       imgSrc: "/src/assets/images/mtn.jpg",
     },
@@ -16,7 +28,18 @@ const App = () => {
       imgSrc: "/src/assets/images/GloLogo.png",
     },
     {
-      prefixes: ["0802", "0808", "0708", "0701", "0812", "0901", "0902", "0904", "0907", "0912"],
+      prefixes: [
+        "0802",
+        "0808",
+        "0708",
+        "0701",
+        "0812",
+        "0901",
+        "0902",
+        "0904",
+        "0907",
+        "0912",
+      ],
       name: "Airtel",
       imgSrc: "/src/assets/images/airtel.png",
     },
@@ -36,22 +59,24 @@ const App = () => {
       imgSrc: "/src/assets/images/starcomms.png",
     },
   ];
-  
+
   const verifyNumber = (input: string) => {
     if (!input.trim()) {
       toast("Please enter a phone number");
       return;
     }
-  
+
     const network = networkData.find((network) =>
       network.prefixes.some((prefix) => input.startsWith(prefix))
     );
-  
+
     if (network) {
       toast(
         <div className="flex items-center gap-x-3">
-          <img src={network.imgSrc} className="h-6 w-6" />
-          This is a {network.name} phone number.
+          <img src={network.imgSrc} className="h-6 w-6" alt={network.name} />
+          {network.name === "9mobile" || network.name === "Starcomms"
+            ? `This is a ${network.name} phone number.`
+            : `This is an ${network.name} phone number.`}
         </div>
       );
     } else {
@@ -61,7 +86,7 @@ const App = () => {
 
   return (
     <main className="bg-[#F8F8F8] flex h-screen flex-col justify-center items-center px-5">
-      <Toaster/>
+      <Toaster />
       <div className="border-2 border-[#E5E5E5] bg-white flex items-center gap-x-2 justify-between w-full md:w-2/4 lg:w-1/3 my-5 p-2 rounded-full">
         <input
           type="tel"
@@ -74,7 +99,7 @@ const App = () => {
         <button
           type="submit"
           className="bg-black p-4 rounded-full transition-all ease-out duration-200 hover:shadow-lg"
-          onClick={()=> verifyNumber(input)}
+          onClick={() => verifyNumber(input)}
         >
           <svg
             width="18"
