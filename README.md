@@ -20,3 +20,12 @@
    ```bash
    git clone https://github.com/yourusername/telcheck.git
    cd telcheck
+
+## NPM Package
+I also turned it into an npm package for developers! 🎉  
+
+Check it out here: [tel-check-ts on npm](https://www.npmjs.com/package/tel-check-ts)  
+
+💻 *Tools Used*: Vite, TypeScript, and Rollup.  
+
+Whether you're building apps or just curious, this tool is fast, efficient, and easy to integrate! 
