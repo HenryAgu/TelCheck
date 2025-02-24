@@ -60,7 +60,26 @@ const App = () => {
           </svg>
         </button>
       </div>
-      <div className="absolute bottom-5 right-5">
+      <div className="absolute bottom-5 right-5 flex gap-x-3">
+        <a
+          href="https://www.npmjs.com/package/tel-check-ts"
+          target="_blank"
+          className="border border-[#E5E5E5] py-2 px-4 rounded-md flex items-center gap-x-3.5"
+        >
+          <span className="text-sm text-[#4f4f4f]">Try NPM Package</span>
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 15 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 0V2H11.59L0 13.59L1.41 15L13 3.41V10H15V0H5Z"
+              fill="#323232"
+            />
+          </svg>
+        </a>
         <a
           href="https://henry-agu.vercel.app/"
           target="_blank"
