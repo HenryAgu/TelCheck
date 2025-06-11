@@ -80,8 +80,22 @@ export const useVerifyNumber = () => {
       return;
     }
 
+    // Normalize: remove non-digit characters
+    let number = input.replace(/\D/g, "");
+
+    // Convert from international to local format if necessary
+    if (number.startsWith("234")) {
+      number = "0" + number.slice(3);
+    }
+
+    if (number.length !== 11) {
+      toast("Invalid phone number length");
+      return;
+    }
+
+    // Now detect network
     const network = networkData.find((network) =>
-      network.prefixes.some((prefix) => input.startsWith(prefix))
+      network.prefixes.some((prefix) => number.startsWith(prefix))
     );
 
     if (network) {
@@ -89,10 +103,7 @@ export const useVerifyNumber = () => {
         name: network.name,
         imgSrc: network.imgSrc,
         message: `${
-          network.name === "9mobile" ||
-          network.name === "Starcomms" ||
-          network.name === "Zoom" ||
-          network.name === "Smile"
+          ["9mobile", "Starcomms", "Zoom", "Smile"].includes(network.name)
             ? `This is a ${network.name} phone number.`
             : `This is an ${network.name} phone number.`
         }`,
